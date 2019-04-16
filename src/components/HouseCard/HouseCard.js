@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 export default class HouseCard extends Component {
   render () {
@@ -15,4 +16,14 @@ export default class HouseCard extends Component {
       </div>
     )
   }
+}
+
+HouseCard.propTypes = {
+  name: PropTypes.string,
+  founded: PropTypes.string,
+  seats: PropTypes.array,
+  titles: PropTypes.array,
+  coatOfArms: PropTypes.string,
+  ancestralWeapons: PropTypes.array,
+  words: PropTypes.string
 }

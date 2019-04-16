@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { storeHouseData, hasError, isLoading } from '../../actions';
 import { Loader } from '../Loader/Loader';
 import CardContainer from '../CardContainer/CardContainer';
+import PropTypes from 'prop-types'
 
 class App extends Component {
 
@@ -61,3 +62,12 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  houses: PropTypes.array,
+  error: PropTypes.string,
+  loading: PropTypes.bool,
+  storeHouseData: PropTypes.func,
+  hasError: PropTypes.func,
+  isLoading: PropTypes.func
+}
