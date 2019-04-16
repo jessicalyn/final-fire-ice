@@ -12,3 +12,9 @@ export const isLoading = (boolean) => ({
   type: 'IS_LOADING',
   boolean
 })
+
+export const updateMembers = (members, name) => ({
+  type: 'UPDATE_SWORN_MEMBERS',
+  members,
+  name
+})

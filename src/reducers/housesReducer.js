@@ -4,8 +4,13 @@ export const housesReducer = (state = [], action) => {
       return action.houseData
 
     case 'UPDATE_SWORN_MEMBERS':
-      
-      return action.houseData
+      const updatedHouses = state.map(house => {
+        if (house.name === action.name) {
+          house.swornMembers = action.members
+        }
+        return house
+      })
+      return updatedHouses
 
     default:
       return state

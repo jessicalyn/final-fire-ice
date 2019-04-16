@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { updateMembers } from '../../actions';
+import { connect } from 'react-redux'
 
-export default class HouseCard extends Component {
+export class HouseCard extends Component {
 
   fetchSwornMembers = () => {
-    const { swornMembers } = this.props
-    const memberNames = swornMembers.map(async url => {
+    const { swornMembers, name, updateMembers } = this.props
+    let members = []
+    swornMembers.map(async url => {
       const response = await fetch(url)
       const result = await response.json()
-      console.log(swornMembers)
-      return result.name
+      members.push(result.name)
+      updateMembers({members, name})
     })
   }
 
@@ -29,6 +32,12 @@ export default class HouseCard extends Component {
     )
   }
 }
+
+export const mapDispatchToProps = (dispatch) => ({
+  updateMembers: (members, name) => dispatch(updateMembers(members, name))
+})
+
+export default connect(null, mapDispatchToProps)(HouseCard)
 
 HouseCard.propTypes = {
   name: PropTypes.string,
