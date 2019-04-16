@@ -1,4 +1,4 @@
-import App, { mapStateToProps, mapDispatchToProps } from './App';
+import { mapStateToProps, mapDispatchToProps } from './App';
 import { mockHouseData } from '../../mockHouseData';
 import * as actions from '../../actions'
 
