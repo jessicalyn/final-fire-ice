@@ -40,7 +40,7 @@ class App extends Component {
           <h2>Welcome to Westeros</h2>
           { error && error }
         </div>
-        <div className='Container'>
+        <div className='Display-info'>
           { loading && <Loader />}
           <CardContainer />
         </div>

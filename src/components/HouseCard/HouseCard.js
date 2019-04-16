@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 export default class HouseCard extends Component {
+
+  fetchSwornMembers = () => {
+    const { swornMembers } = this.props
+    const memberNames = swornMembers.map(async url => {
+      const response = await fetch(url)
+      const result = await response.json()
+      console.log(swornMembers)
+      return result.name
+    })
+  }
+
   render () {
     const { name, founded, seats, titles, coatOfArms, ancestralWeapons, words } = this.props
     return (
@@ -12,7 +23,8 @@ export default class HouseCard extends Component {
         <p>Seats: { seats }</p>
         <p>Titles: { titles }</p>
         <p>Coat of Arms: { coatOfArms }</p>
-        <p>Ancenstral Weapons: { ancestralWeapons}</p> 
+        <p>Ancenstral Weapons: { ancestralWeapons}</p>
+        <button onClick={ this.fetchSwornMembers }>Add Sworn Members</button>
       </div>
     )
   }
@@ -25,5 +37,6 @@ HouseCard.propTypes = {
   titles: PropTypes.array,
   coatOfArms: PropTypes.string,
   ancestralWeapons: PropTypes.array,
-  words: PropTypes.string
+  words: PropTypes.string,
+  swornMembers: PropTypes.array
 }
