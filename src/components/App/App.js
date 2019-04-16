@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { storeHouseData, hasError, isLoading } from '../../actions'
+import { storeHouseData, hasError, isLoading } from '../../actions';
+import { Loader } from '../Loader/Loader';
 
 class App extends Component {
 
@@ -29,13 +30,17 @@ class App extends Component {
   }
 
   render() {
+    const { houses, error, loading } = this.props
     return (
       <div className='App'>
         <div className='App-header'>
           <img src={logo} className='App-logo' alt='logo' />
           <h2>Welcome to Westeros</h2>
+          { error && error }
         </div>
-        <div className='Display-info'>
+        <div className='Container'>
+          { loading && <Loader />}
+
         </div>
       </div>
     );
