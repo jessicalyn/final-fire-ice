@@ -4,9 +4,9 @@ import { loadingReducer } from './loadingReducer';
 import { housesReducer } from './housesReducer'
 
 const rootReducer = combineReducers({
-  errorReducer,
-  loadingReducer,
-  housesReducer
+  error: errorReducer,
+  loading: loadingReducer,
+  houses: housesReducer
 })
 
 export default rootReducer

@@ -4,6 +4,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { storeHouseData, hasError, isLoading } from '../../actions';
 import { Loader } from '../Loader/Loader';
+import CardContainer from '../CardContainer/CardContainer';
 
 class App extends Component {
 
@@ -30,7 +31,7 @@ class App extends Component {
   }
 
   render() {
-    const { houses, error, loading } = this.props
+    const { error, loading } = this.props
     return (
       <div className='App'>
         <div className='App-header'>
@@ -40,7 +41,7 @@ class App extends Component {
         </div>
         <div className='Container'>
           { loading && <Loader />}
-
+          <CardContainer />
         </div>
       </div>
     );
