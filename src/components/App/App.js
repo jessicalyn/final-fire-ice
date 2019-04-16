@@ -11,17 +11,20 @@ class App extends Component {
   }
   
   fetchHouseData = async () => {
-    console.log("fetch data")
+    const { isLoading, hasError, storeHouseData } = this.props
     const url = 'http://localhost:3001/api/v1/houses'
     try {
+      isLoading(true)
       const response = await fetch(url)
       if (!response.ok) {
         throw Error
       }
-      const houses = await response.json()
-      console.log("house data", houses)
+      const houseData = await response.json()
+      isLoading(false)
+      storeHouseData(houseData)
+      console.log("house data", houseData)
     } catch (error) {
-        return error.message
+        return hasError(error.message)
     }
   }
 
